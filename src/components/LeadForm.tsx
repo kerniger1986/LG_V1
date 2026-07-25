@@ -89,9 +89,9 @@ export function LeadForm({ ortSeite }: LeadFormProps) {
           Vielen Dank!
         </h3>
         <p className="text-lg text-green-900">
-          Wir haben Ihre Angaben erhalten und melden uns in der Regel
-          innerhalb von 1–2 Werktagen persönlich bei Ihnen – unverbindlich
-          und kostenlos.
+          Wir haben Ihre Angaben erhalten und melden uns in der Regel noch
+          am selben oder nächsten Werktag persönlich bei Ihnen –
+          unverbindlich und kostenlos.
         </p>
       </div>
     );

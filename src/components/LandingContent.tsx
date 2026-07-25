@@ -110,6 +110,20 @@ export function LandingContent({
           gerne ein ruhiger, verlässlicher Ansprechpartner – ohne Zeitdruck
           und ohne aufdringliche Anrufe.
         </p>
+        <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-8">
+          <Link
+            href="/immobilie-verkaufen/erbschaft"
+            className="text-lg text-blue-700 underline"
+          >
+            Haben Sie geerbt? Hier speziell für Erben →
+          </Link>
+          <Link
+            href="/immobilie-verkaufen/ruhestand"
+            className="text-lg text-blue-700 underline"
+          >
+            Planen Sie Ihren Ruhestand? Hier speziell für Sie →
+          </Link>
+        </div>
       </section>
 
       <section
@@ -161,7 +175,7 @@ export function LandingContent({
                 Wie schnell melden Sie sich?
               </h3>
               <p className="mt-1 text-lg text-slate-700">
-                In der Regel innerhalb von 1–2 Werktagen.
+                In der Regel noch am selben oder nächsten Werktag.
               </p>
             </div>
           </div>
