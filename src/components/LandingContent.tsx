@@ -52,6 +52,7 @@ export function LandingContent({
         subheadline={`Kostenlose, unverbindliche Einschätzung durch einen lokalen Marktkenner${intro ? ` – ${intro}` : "."} Ganz in Ruhe, ohne Verpflichtung und ohne Drucksprache.`}
         ctaLabel="Jetzt kostenlos einschätzen lassen"
         ctaHref="#einschaetzung"
+        showRegionPhoto={zeigeOrtsliste}
       />
 
       <Reveal>
@@ -106,11 +107,12 @@ export function LandingContent({
             Für wen wir da sind
           </h2>
           <p className="mt-4 max-w-3xl text-lg text-[#5C6660]">
-            Besonders häufig sprechen wir mit Eigentümerinnen und
-            Eigentümern, die eine Immobilie geerbt haben oder im Ruhestand
-            über einen Verkauf nachdenken. Auch bei einem Umzug oder einer
-            Scheidung sind wir gerne ein ruhiger, verlässlicher
-            Ansprechpartner – ohne Zeitdruck und ohne aufdringliche Anrufe.
+            Unser Schwerpunkt liegt auf zwei Situationen: Eigentümerinnen und
+            Eigentümern, die eine Immobilie <strong>geerbt</strong> haben,
+            und solchen, die im <strong>Ruhestand</strong> über einen Verkauf
+            nachdenken. Daneben sind wir auch bei einem Umzug oder einer
+            Scheidung gerne ein ruhiger, verlässlicher Ansprechpartner – ohne
+            Zeitdruck und ohne aufdringliche Anrufe.
           </p>
           <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-8">
             <Link

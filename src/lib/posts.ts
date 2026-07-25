@@ -19,6 +19,16 @@ export interface Post extends PostMeta {
   contentHtml: string;
 }
 
+const personaLabels: Record<Persona, string> = {
+  erbschaft: "Für Erben",
+  ruhestand: "Für den Ruhestand",
+};
+
+/** Anzeigename fuer das Kategorie-Badge - "Allgemein" fuer Beitraege ohne Persona. */
+export function getPersonaLabel(persona?: Persona): string {
+  return persona ? personaLabels[persona] : "Allgemein";
+}
+
 function heuteIso(): string {
   return new Date().toISOString().slice(0, 10);
 }

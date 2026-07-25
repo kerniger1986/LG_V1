@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostBySlug } from "@/lib/posts";
+import { getPostBySlug, getPersonaLabel } from "@/lib/posts";
 import { personaSerif } from "@/lib/persona-fonts";
 
 interface PageProps {
@@ -13,11 +13,6 @@ interface PageProps {
 // fuer die Zukunft geplanter Beitrag liegt zwar schon im Repository, liefert
 // aber bis zu seinem Datum ganz normal einen 404 - kein Redeploy noetig.
 export const dynamic = "force-dynamic";
-
-const personaLabel: Record<string, string> = {
-  erbschaft: "Für Erben",
-  ruhestand: "Für den Ruhestand",
-};
 
 // Farben der Typography-Plugin-Vorgaben (--tw-prose-*) auf das
 // Siebengebirge-Farbschema umstellen, statt der Slate-Standardpalette.
@@ -57,11 +52,9 @@ export default async function RatgeberArtikelPage({ params }: PageProps) {
           ← Zurück zum Ratgeber
         </Link>
 
-        {post.persona && (
-          <span className="mt-6 mb-2 inline-block rounded-full bg-[#EFF2ED] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#2F5D50]">
-            {personaLabel[post.persona] ?? post.persona}
-          </span>
-        )}
+        <span className="mt-6 mb-2 inline-block rounded-full bg-[#EFF2ED] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#2F5D50]">
+          {getPersonaLabel(post.persona)}
+        </span>
 
         <h1
           className={`${personaSerif.className} text-balance mt-3 text-3xl font-bold leading-tight text-[#23282A] sm:text-4xl`}

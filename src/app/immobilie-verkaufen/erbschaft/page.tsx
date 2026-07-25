@@ -48,6 +48,7 @@ export default function ErbschaftPage() {
         subheadline="Kostenlose, unverbindliche Einschätzung – auch wenn sich die Erbengemeinschaft noch nicht einig ist."
         ctaLabel="Jetzt kostenlos einschätzen lassen"
         ctaHref="#einschaetzung"
+        showRegionPhoto
       />
       <Reveal>
         <PersonaProblemSection points={problemPunkte} />

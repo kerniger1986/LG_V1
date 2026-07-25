@@ -53,6 +53,7 @@ export default function RuhestandPage() {
         ctaLabel="Kostenlos beraten lassen"
         ctaHref="#einschaetzung"
         phone={telefon ?? undefined}
+        showRegionPhoto
       />
       <Reveal>
         <PersonaProblemSection large points={problemPunkte} />
