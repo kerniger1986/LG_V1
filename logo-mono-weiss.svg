@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" width="420" height="100">
+  <g>
+    <circle cx="50" cy="50" r="44" fill="none" stroke="#FFFFFF" stroke-width="2.5"></circle>
+    <path d="M16,76 Q31,65 50,76 Q69,87 84,76" fill="none" stroke="#FFFFFF" stroke-width="1.4"></path>
+    <text x="50" y="61" text-anchor="middle" font-family="&#39;Source Serif 4&#39;, &#39;Lora&#39;, Georgia, serif" font-size="32" fill="#FFFFFF">RS</text>
+    <circle cx="50" cy="50" r="38" fill="none" stroke="#FFFFFF" stroke-width="1"></circle>
+  </g>
+  <g transform="translate(120,20)">
+    <text x="0" y="26" font-family="&#39;Source Serif 4&#39;, &#39;Lora&#39;, Georgia, serif" font-size="30" letter-spacing="0.3" fill="#FFFFFF">Rhein-Sieg</text>
+    <path d="M0,38 L162,38 L178,32 L188,38 L300,38" stroke="#FFFFFF" stroke-width="1.4" fill="none"></path>
+    <text x="0" y="58" font-family="Jost, Helvetica, Arial, sans-serif" font-size="12.5" letter-spacing="2.2" fill="#FFFFFF">IMMOBILIENBERATUNG</text>
+  </g>
+</svg>
