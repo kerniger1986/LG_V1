@@ -16,7 +16,10 @@ export async function sendeLeadBenachrichtigung(lead: Lead) {
     `*Name:* ${lead.name}`,
     `*Telefon:* ${lead.telefon}`,
     `*E-Mail:* ${lead.email}`,
-    `*PLZ/Ort:* ${lead.plzOrt}`,
+    `*Adresse:* ${lead.plzOrt}`,
+    lead.lat && lead.lng
+      ? `*Karte:* https://www.google.com/maps/search/?api=1&query=${lead.lat},${lead.lng}`
+      : null,
     `*Immobilientyp:* ${lead.immobilientyp}`,
     `*Wohnfläche:* ${lead.wohnflaeche} m²`,
     `*Verkaufsgrund:* ${lead.verkaufsgrund}`,

@@ -69,6 +69,8 @@ export const leads = pgTable("leads", {
   telefon: text("telefon").notNull(),
   email: text("email").notNull(),
   plzOrt: text("plz_ort").notNull(),
+  lat: numeric("lat", { precision: 9, scale: 6 }),
+  lng: numeric("lng", { precision: 9, scale: 6 }),
 
   // Objektdaten
   immobilientyp: immobilientypEnum("immobilientyp").notNull(),

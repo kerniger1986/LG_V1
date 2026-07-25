@@ -124,6 +124,23 @@ export default function DatenschutzPage() {
 
         <section>
           <h2 className="text-xl font-semibold text-slate-900">
+            7. Adress-Autovervollständigung (Google Places)
+          </h2>
+          <p className="mt-2">
+            Beim Ausfüllen des Adressfelds im Kontaktformular nutzen wir den
+            Places-Dienst von Google Ireland Limited, um Ihnen passende
+            Adressvorschläge anzuzeigen. Dabei werden Ihre Tastatureingaben
+            in diesem Feld an Google übertragen. Dies erfolgt unabhängig von
+            der Cookie-Einwilligung, da es sich um eine für die
+            Formularnutzung erforderliche Funktion handelt (Art. 6 Abs. 1
+            lit. f DSGVO). [PLATZHALTER: sobald aktiv, Datenübermittlung in
+            Drittländer und Auftragsverarbeitung mit Google prüfen und hier
+            ergänzen.]
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">
             7. Ihre Rechte
           </h2>
           <p className="mt-2">

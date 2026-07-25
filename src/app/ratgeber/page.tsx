@@ -8,6 +8,10 @@ export const metadata: Metadata = {
     "Verständliche Beiträge rund um Erbschaft, Ruhestand und Immobilienverkauf im Rhein-Sieg-Kreis.",
 };
 
+// publishDate wird bei jedem Request geprueft (siehe src/lib/posts.ts),
+// daher darf diese Seite nicht zur Build-Zeit eingefroren werden.
+export const dynamic = "force-dynamic";
+
 export default function RatgeberPage() {
   const posts = getAllPosts();
 
@@ -28,7 +32,7 @@ export default function RatgeberPage() {
             >
               {post.title}
             </Link>
-            <p className="mt-2 text-lg text-slate-700">{post.description}</p>
+            <p className="mt-2 text-lg text-slate-700">{post.metaDescription}</p>
           </li>
         ))}
         {posts.length === 0 && (

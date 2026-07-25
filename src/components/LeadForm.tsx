@@ -1,22 +1,36 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { loadGooglePlaces, RHEIN_SIEG_BOUNDS } from "@/lib/google-places";
 
 interface LeadFormProps {
   ortSeite: string;
+  variant?: "default" | "persona";
 }
 
-const feldLabel = "block text-lg font-medium text-slate-800 mb-2";
-const feldInput =
-  "w-full rounded-lg border border-slate-300 px-4 py-3 text-lg text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none";
+const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
-export function LeadForm({ ortSeite }: LeadFormProps) {
+export function LeadForm({ ortSeite, variant = "default" }: LeadFormProps) {
+  const isPersona = variant === "persona";
+
+  const feldLabel = isPersona
+    ? "block text-lg font-medium text-[#23282A] mb-2"
+    : "block text-lg font-medium text-slate-800 mb-2";
+  const feldInput = isPersona
+    ? "w-full rounded-lg border border-[#23282A]/25 px-4 py-3 text-lg text-[#23282A] focus:border-[#2F5D50] focus:ring-2 focus:ring-[#2F5D50]/20 outline-none accent-[#2F5D50]"
+    : "w-full rounded-lg border border-slate-300 px-4 py-3 text-lg text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none";
+  const submitButton = isPersona
+    ? "w-full rounded-lg bg-[#C08A2E] px-6 py-4 text-xl font-semibold text-[#23282A] transition-colors hover:brightness-95 disabled:opacity-60"
+    : "w-full rounded-lg bg-blue-700 px-6 py-4 text-xl font-semibold text-white hover:bg-blue-800 disabled:opacity-60";
+
   const [vermietet, setVermietet] = useState<"ja" | "nein" | "">("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
   );
   const [fehlerText, setFehlerText] = useState<string | null>(null);
   const [utmQuelle, setUtmQuelle] = useState("");
+  const [koordinaten, setKoordinaten] = useState({ lat: "", lng: "" });
+  const adresseInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -30,6 +44,43 @@ export function LeadForm({ ortSeite }: LeadFormProps) {
     setUtmQuelle(quelle);
   }, []);
 
+  useEffect(() => {
+    if (!GOOGLE_MAPS_API_KEY || !adresseInputRef.current) return;
+
+    let autocomplete: google.maps.places.Autocomplete | undefined;
+    let listener: google.maps.MapsEventListener | undefined;
+
+    loadGooglePlaces(GOOGLE_MAPS_API_KEY)
+      .then(() => {
+        if (!adresseInputRef.current) return;
+        autocomplete = new google.maps.places.Autocomplete(
+          adresseInputRef.current,
+          {
+            fields: ["formatted_address", "geometry"],
+            componentRestrictions: { country: "de" },
+            bounds: RHEIN_SIEG_BOUNDS,
+          },
+        );
+        listener = autocomplete.addListener("place_changed", () => {
+          const place = autocomplete?.getPlace();
+          const location = place?.geometry?.location;
+          if (location) {
+            setKoordinaten({
+              lat: location.lat().toString(),
+              lng: location.lng().toString(),
+            });
+          }
+        });
+      })
+      .catch((error) => {
+        console.warn("Google Places nicht verfügbar:", error);
+      });
+
+    return () => {
+      listener?.remove();
+    };
+  }, []);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
@@ -41,6 +92,8 @@ export function LeadForm({ ortSeite }: LeadFormProps) {
       telefon: formData.get("telefon"),
       email: formData.get("email"),
       plzOrt: formData.get("plzOrt"),
+      lat: formData.get("lat") || undefined,
+      lng: formData.get("lng") || undefined,
       immobilientyp: formData.get("immobilientyp"),
       wohnflaeche: formData.get("wohnflaeche"),
       baujahr: formData.get("baujahr") || undefined,
@@ -111,6 +164,8 @@ export function LeadForm({ ortSeite }: LeadFormProps) {
         />
       </div>
       <input type="hidden" name="utmQuelle" value={utmQuelle} />
+      <input type="hidden" name="lat" value={koordinaten.lat} />
+      <input type="hidden" name="lng" value={koordinaten.lng} />
 
       <div>
         <label className={feldLabel} htmlFor="name">
@@ -157,15 +212,17 @@ export function LeadForm({ ortSeite }: LeadFormProps) {
 
       <div>
         <label className={feldLabel} htmlFor="plzOrt">
-          PLZ und Ort der Immobilie *
+          Adresse der Immobilie *
         </label>
         <input
+          ref={adresseInputRef}
           className={feldInput}
           id="plzOrt"
           name="plzOrt"
           type="text"
           required
-          placeholder="z. B. 53604 Bad Honnef"
+          autoComplete="off"
+          placeholder="z. B. Musterstraße 1, 53604 Bad Honnef"
         />
       </div>
 
@@ -334,9 +391,12 @@ export function LeadForm({ ortSeite }: LeadFormProps) {
           id="datenschutzZustimmung"
           name="datenschutzZustimmung"
           required
-          className="mt-1.5 h-5 w-5"
+          className={`mt-1.5 h-5 w-5 ${isPersona ? "accent-[#2F5D50]" : ""}`}
         />
-        <label htmlFor="datenschutzZustimmung" className="text-base text-slate-700">
+        <label
+          htmlFor="datenschutzZustimmung"
+          className={isPersona ? "text-base text-[#23282A]" : "text-base text-slate-700"}
+        >
           Ich habe die{" "}
           <a href="/datenschutz" className="underline" target="_blank">
             Datenschutzerklärung
@@ -352,11 +412,7 @@ export function LeadForm({ ortSeite }: LeadFormProps) {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full rounded-lg bg-blue-700 px-6 py-4 text-xl font-semibold text-white hover:bg-blue-800 disabled:opacity-60"
-      >
+      <button type="submit" disabled={status === "submitting"} className={submitButton}>
         {status === "submitting"
           ? "Wird gesendet …"
           : "Kostenlose Einschätzung anfordern"}

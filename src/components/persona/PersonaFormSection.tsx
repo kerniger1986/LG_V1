@@ -28,7 +28,7 @@ export function PersonaFormSection({
           </p>
         )}
         <div className="mt-8 rounded-xl bg-white p-6 shadow-sm sm:p-8">
-          <LeadForm ortSeite={ortSeite} />
+          <LeadForm ortSeite={ortSeite} variant="persona" />
         </div>
       </div>
     </section>

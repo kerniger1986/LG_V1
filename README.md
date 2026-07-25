@@ -35,6 +35,15 @@ cp .env.example .env.local
   `NEXT_PUBLIC_META_PIXEL_ID` – optional, erst eintragen, sobald die
   entsprechenden Werbekonten angelegt sind. Ohne diese Werte lädt die Seite
   keinerlei Tracking-Skripte.
+- `NEXT_PUBLIC_CONTACT_PHONE` – optional, Telefonnummer für den
+  Klick-zum-Anrufen-Button auf der Ruhestand-Landingpage. Leer lassen, dann
+  wird der Button ausgeblendet.
+- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` – optional, aktiviert Adress-Autocomplete
+  im Lead-Formular. Einrichtung: Google Cloud Projekt anlegen, **Places API**
+  aktivieren, Abrechnungskonto hinterlegen (Google gewährt ein monatliches
+  Freikontingent), API-Key erzeugen und per HTTP-Referrer auf die eigene
+  Domain einschränken. Ohne diesen Wert bleibt das Adressfeld ein normales
+  Textfeld.
 
 Datenbankschema anlegen:
 

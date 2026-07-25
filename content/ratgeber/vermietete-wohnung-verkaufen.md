@@ -1,7 +1,7 @@
 ---
 title: "Vermietete Wohnung verkaufen: Was Eigentümer wissen sollten"
-description: "Eine vermietete Immobilie verkaufen? Ein Überblick über die wichtigsten Punkte, die Vermieter dabei beachten sollten."
-date: "2026-01-25"
+metaDescription: "Eine vermietete Immobilie verkaufen? Ein Überblick über die wichtigsten Punkte, die Vermieter dabei beachten sollten."
+publishDate: "2026-01-25"
 ---
 
 Eine vermietete Wohnung oder ein vermietetes Haus zu verkaufen, unterscheidet sich in einigen Punkten vom Verkauf einer leerstehenden Immobilie. Hier ein kurzer Überblick.

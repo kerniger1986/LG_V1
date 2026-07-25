@@ -5,12 +5,19 @@ import { PersonaProblemSection } from "@/components/persona/PersonaProblemSectio
 import { PersonaFaqSection } from "@/components/persona/PersonaFaqSection";
 import { PersonaFormSection } from "@/components/persona/PersonaFormSection";
 import { PersonaAblaufSection } from "@/components/persona/PersonaAblaufSection";
+import { PersonaRatgeberSection } from "@/components/persona/PersonaRatgeberSection";
+import { Reveal } from "@/components/persona/Reveal";
+import { getPostsByPersona } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Geerbte Immobilie verkaufen im Rhein-Sieg-Kreis – kostenlose Einschätzung",
   description:
     "Kostenlose, unverbindliche Einschätzung für geerbte Immobilien – auch wenn sich die Erbengemeinschaft noch nicht einig ist.",
 };
+
+// Ratgeber-Verlinkung haengt vom aktuellen Datum ab (publishDate-Steuerung),
+// daher darf diese Seite nicht statisch eingefroren werden.
+export const dynamic = "force-dynamic";
 
 const problemPunkte = [
   "Ein Miterbe will verkaufen, ein anderer nicht? Wir zeigen Ihnen, welche Optionen es zwischen Einigung und Teilungsversteigerung wirklich gibt.",
@@ -43,14 +50,25 @@ export default function ErbschaftPage() {
         ctaLabel="Jetzt kostenlos einschätzen lassen"
         ctaHref="#einschaetzung"
       />
-      <PersonaProblemSection points={problemPunkte} />
-      <PersonaFaqSection items={faqItems} />
-      <PersonaFormSection
-        ortSeite="erbschaft"
-        heading="Kostenlose Einschätzung anfordern"
-        intro="Füllen Sie das Formular aus – wir melden uns persönlich bei Ihnen, unabhängig davon, wie weit die Erbengemeinschaft in ihrer Entscheidung schon ist."
-      />
-      <PersonaAblaufSection />
+      <Reveal>
+        <PersonaProblemSection points={problemPunkte} />
+      </Reveal>
+      <Reveal>
+        <PersonaFaqSection items={faqItems} />
+      </Reveal>
+      <Reveal>
+        <PersonaFormSection
+          ortSeite="erbschaft"
+          heading="Kostenlose Einschätzung anfordern"
+          intro="Füllen Sie das Formular aus – wir melden uns persönlich bei Ihnen, unabhängig davon, wie weit die Erbengemeinschaft in ihrer Entscheidung schon ist."
+        />
+      </Reveal>
+      <Reveal>
+        <PersonaAblaufSection />
+      </Reveal>
+      <Reveal>
+        <PersonaRatgeberSection posts={getPostsByPersona("erbschaft")} />
+      </Reveal>
     </PersonaTheme>
   );
 }

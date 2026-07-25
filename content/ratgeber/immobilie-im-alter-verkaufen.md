@@ -1,7 +1,8 @@
 ---
 title: "Immobilie im Alter verkaufen: Worauf Sie achten sollten"
-description: "Im Ruhestand über einen Verkauf der eigenen Immobilie nachdenken? Ein paar Gedanken für eine gut überlegte Entscheidung."
-date: "2026-01-20"
+metaDescription: "Im Ruhestand über einen Verkauf der eigenen Immobilie nachdenken? Ein paar Gedanken für eine gut überlegte Entscheidung."
+publishDate: "2026-01-20"
+persona: "ruhestand"
 ---
 
 Viele Eigentümerinnen und Eigentümer denken im Ruhestand über die Zukunft ihres Hauses oder ihrer Wohnung nach – sei es, weil die Immobilie zu groß geworden ist, die Pflege zu aufwendig wird, oder weil man das gebundene Kapital anders nutzen möchte. Ein Verkauf ist dabei nur eine von mehreren Möglichkeiten.

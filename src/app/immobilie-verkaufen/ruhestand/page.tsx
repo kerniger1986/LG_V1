@@ -5,6 +5,10 @@ import { PersonaProblemSection } from "@/components/persona/PersonaProblemSectio
 import { PersonaFaqSection } from "@/components/persona/PersonaFaqSection";
 import { PersonaFormSection } from "@/components/persona/PersonaFormSection";
 import { PersonaAblaufSection } from "@/components/persona/PersonaAblaufSection";
+import { getContactPhone } from "@/lib/contact";
+import { PersonaRatgeberSection } from "@/components/persona/PersonaRatgeberSection";
+import { Reveal } from "@/components/persona/Reveal";
+import { getPostsByPersona } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Zuhause im Ruhestand verkaufen – Bad Honnef & Umgebung, kostenlose Einschätzung",
@@ -12,8 +16,9 @@ export const metadata: Metadata = {
     "Kostenlose, unverbindliche Einschätzung für Eigentümerinnen und Eigentümer im Ruhestand – in Ruhe, ohne Eile, auch am Telefon.",
 };
 
-// TODO: Platzhalter - vor Go-Live durch die echte Telefonnummer ersetzen.
-const telefon = { label: "[Telefonnummer einfügen]", href: "tel:" };
+// Ratgeber-Verlinkung haengt vom aktuellen Datum ab (publishDate-Steuerung),
+// daher darf diese Seite nicht statisch eingefroren werden.
+export const dynamic = "force-dynamic";
 
 const problemPunkte = [
   "Reicht die Rente nicht mehr für Instandhaltung oder Pflege? Wir zeigen Ihnen, was Ihr Zuhause heute wert ist.",
@@ -37,6 +42,8 @@ const faqItems = [
 ];
 
 export default function RuhestandPage() {
+  const telefon = getContactPhone();
+
   return (
     <PersonaTheme>
       <PersonaHero
@@ -46,17 +53,32 @@ export default function RuhestandPage() {
         subheadline="Kostenlose, unverbindliche Einschätzung durch einen Ansprechpartner vor Ort."
         ctaLabel="Kostenlos beraten lassen"
         ctaHref="#einschaetzung"
-        phone={telefon}
+        phone={telefon ?? undefined}
       />
-      <PersonaProblemSection large points={problemPunkte} />
-      <PersonaAblaufSection large />
-      <PersonaFaqSection large items={faqItems} />
-      <PersonaFormSection
-        large
-        ortSeite="ruhestand"
-        heading="Kostenlos beraten lassen"
-        intro="Wenn Sie so weit sind: Füllen Sie das Formular aus, oder rufen Sie uns einfach an – ganz wie es Ihnen lieber ist."
-      />
+      <Reveal>
+        <PersonaProblemSection large points={problemPunkte} />
+      </Reveal>
+      <Reveal>
+        <PersonaAblaufSection large />
+      </Reveal>
+      <Reveal>
+        <PersonaFaqSection large items={faqItems} />
+      </Reveal>
+      <Reveal>
+        <PersonaFormSection
+          large
+          ortSeite="ruhestand"
+          heading="Kostenlos beraten lassen"
+          intro={
+            telefon
+              ? "Wenn Sie so weit sind: Füllen Sie das Formular aus, oder rufen Sie uns einfach an – ganz wie es Ihnen lieber ist."
+              : "Wenn Sie so weit sind: Füllen Sie das Formular aus – wir melden uns persönlich bei Ihnen."
+          }
+        />
+      </Reveal>
+      <Reveal>
+        <PersonaRatgeberSection large posts={getPostsByPersona("ruhestand")} />
+      </Reveal>
     </PersonaTheme>
   );
 }

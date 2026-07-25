@@ -65,8 +65,23 @@ export default async function LeadDetailPage({ params }: PageProps) {
             <p className="text-slate-900">{lead.email}</p>
           </div>
           <div>
-            <span className="text-slate-500">PLZ/Ort</span>
-            <p className="text-slate-900">{lead.plzOrt}</p>
+            <span className="text-slate-500">Adresse</span>
+            <p className="text-slate-900">
+              {lead.plzOrt}
+              {lead.lat && lead.lng && (
+                <>
+                  {" "}
+                  ·{" "}
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${lead.lat},${lead.lng}`}
+                    target="_blank"
+                    className="text-blue-700 underline"
+                  >
+                    auf Karte anzeigen
+                  </a>
+                </>
+              )}
+            </p>
           </div>
           <div>
             <span className="text-slate-500">Immobilientyp</span>

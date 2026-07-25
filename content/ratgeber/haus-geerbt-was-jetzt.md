@@ -1,7 +1,8 @@
 ---
 title: "Haus geerbt – was jetzt? Ein ruhiger Fahrplan für Erben"
-description: "Ein Haus oder eine Wohnung geerbt und unsicher, wie es weitergeht? Ein Überblick über die ersten Schritte, ganz ohne Zeitdruck."
-date: "2026-01-15"
+metaDescription: "Ein Haus oder eine Wohnung geerbt und unsicher, wie es weitergeht? Ein Überblick über die ersten Schritte, ganz ohne Zeitdruck."
+publishDate: "2026-01-15"
+persona: "erbschaft"
 ---
 
 Eine Immobilie zu erben bringt oft viele Fragen mit sich – gerade wenn die Erbschaft mit Trauer und ungewohnten Entscheidungen verbunden ist. Es gibt keinen Grund, sich zu etwas drängen zu lassen. Hier ein paar Punkte, die in der Praxis helfen, den Überblick zu behalten.

@@ -47,6 +47,8 @@ export async function POST(request: NextRequest) {
       telefon: data.telefon,
       email: data.email,
       plzOrt: data.plzOrt,
+      lat: data.lat != null ? String(data.lat) : null,
+      lng: data.lng != null ? String(data.lng) : null,
       immobilientyp: data.immobilientyp,
       wohnflaeche: String(data.wohnflaeche),
       baujahr: data.baujahr ?? null,

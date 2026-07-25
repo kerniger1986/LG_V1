@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getPostBySlug } from "@/lib/posts";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return getAllPosts().map((post) => ({ slug: post.slug }));
-}
+// publishDate wird bei jedem Request geprueft (siehe src/lib/posts.ts): ein
+// fuer die Zukunft geplanter Beitrag liegt zwar schon im Repository, liefert
+// aber bis zu seinem Datum ganz normal einen 404 - kein Redeploy noetig.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -16,7 +17,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
-  return { title: post.title, description: post.description };
+  return { title: post.title, description: post.metaDescription };
 }
 
 export default async function RatgeberArtikelPage({ params }: PageProps) {

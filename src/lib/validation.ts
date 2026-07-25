@@ -9,7 +9,9 @@ export const leadFormSchema = z
       .min(6, "Bitte gib eine Telefonnummer an.")
       .max(30),
     email: z.string().trim().email("Bitte gib eine gültige E-Mail an."),
-    plzOrt: z.string().trim().min(3, "Bitte gib PLZ und Ort an."),
+    plzOrt: z.string().trim().min(3, "Bitte gib die Adresse an."),
+    lat: z.coerce.number().min(-90).max(90).optional(),
+    lng: z.coerce.number().min(-180).max(180).optional(),
     immobilientyp: z.enum(["haus", "wohnung", "grundstueck"]),
     wohnflaeche: z.coerce
       .number()
