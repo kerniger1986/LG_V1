@@ -3,7 +3,7 @@ import { db } from "@/db/client";
 import { leads } from "@/db/schema";
 import { leadFormSchema } from "@/lib/validation";
 import { berechneAmpel } from "@/lib/ampel";
-import { sendeLeadBenachrichtigung } from "@/lib/email";
+import { sendeLeadBenachrichtigung } from "@/lib/notify";
 
 export async function POST(request: NextRequest) {
   let body: unknown;

@@ -10,7 +10,7 @@ ortsspezifische Landingpages mit Formular, automatische Ampel-Vorqualifizierung
 - **Postgres** via [Neon](https://neon.tech) – **EU-Region (Frankfurt)** wählen
 - **Drizzle ORM** für Datenbankzugriff/Migrationen
 - **Auth.js (NextAuth v5)** für den Admin-Login (ein Admin-Account)
-- **Resend** für E-Mail-Benachrichtigung bei neuen Leads
+- **Slack** (Incoming Webhook) für Benachrichtigung bei neuen Leads
 - Deployment auf **Vercel**, ebenfalls **EU-Region (Frankfurt)**
 
 ## Lokale Einrichtung
@@ -29,8 +29,8 @@ cp .env.example .env.local
   npm run hash-password -- "dein-passwort"
   ```
 - `AUTH_SECRET` – erzeugen mit `npx auth secret` oder `openssl rand -base64 32`
-- `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL`, `LEAD_NOTIFICATION_FROM` – für die
-  E-Mail-Benachrichtigung bei neuen Leads (Resend-Konto + verifizierte Absenderdomain nötig)
+- `SLACK_WEBHOOK_URL` – für die Slack-Benachrichtigung bei neuen Leads
+  (Incoming Webhook unter https://api.slack.com/apps anlegen)
 - `NEXT_PUBLIC_GOOGLE_ADS_ID`, `NEXT_PUBLIC_GA4_MEASUREMENT_ID`,
   `NEXT_PUBLIC_META_PIXEL_ID` – optional, erst eintragen, sobald die
   entsprechenden Werbekonten angelegt sind. Ohne diese Werte lädt die Seite
@@ -101,7 +101,7 @@ Schwellenwerte liegt ein 25-%-Toleranzband, das statt ROT auf GELB entscheidet.
       (`src/app/datenschutz/page.tsx`) mit echten Daten befüllen und
       **juristisch prüfen lassen** (alle `[PLATZHALTER]`-Stellen)
 - [ ] § 34c GewO-Erlaubnis final klären (Impressum verweist darauf)
-- [ ] Auftragsverarbeitungsverträge mit Vercel, Neon und Resend abschließen
+- [ ] Auftragsverarbeitungsvertrag mit Vercel und Neon abschließen (Slack: ggf. AVV prüfen, falls über den kostenlosen Plan hinausgegangen wird)
 - [ ] Google Ads- und Meta-Business-Konto anlegen, IDs in den Env-Variablen ergänzen
 - [ ] Tippgeberverträge mit Maklerpartnern schriftlich fixieren
 - [ ] Ersten Admin-Zugang per `npm run hash-password` erzeugen und

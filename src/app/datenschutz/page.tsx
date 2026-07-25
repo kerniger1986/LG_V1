@@ -81,12 +81,12 @@ export default function DatenschutzPage() {
           <p className="mt-2">
             Diese Website wird bei Vercel Inc. gehostet, unsere Datenbank bei
             Neon Inc. betrieben – beide mit Serverstandort in der EU
-            (Frankfurt am Main). Für E-Mail-Benachrichtigungen nutzen wir
-            Resend. Mit allen Dienstleistern, die personenbezogene Daten in
-            unserem Auftrag verarbeiten, besteht bzw. wird ein
-            Auftragsverarbeitungsvertrag nach Art. 28 DSGVO abgeschlossen.
-            [PLATZHALTER: AVV mit Vercel, Neon und Resend abschließen und
-            hier referenzieren.]
+            (Frankfurt am Main). Für interne Benachrichtigungen bei neuen
+            Anfragen nutzen wir Slack. Mit allen Dienstleistern, die
+            personenbezogene Daten in unserem Auftrag verarbeiten, besteht
+            bzw. wird ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO
+            abgeschlossen. [PLATZHALTER: AVV mit Vercel, Neon und ggf. Slack
+            abschließen und hier referenzieren.]
           </p>
         </section>
 
