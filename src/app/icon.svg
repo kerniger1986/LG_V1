@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <circle cx="50" cy="50" r="46" fill="none" stroke="#2F5D50" stroke-width="4"></circle>
+  <path d="M14,78 Q30,66 50,78 Q70,90 86,78" fill="none" stroke="#2F5D50" stroke-width="2.4"></path>
+  <text x="50" y="61" text-anchor="middle" font-family="&#39;Source Serif 4&#39;, &#39;Lora&#39;, Georgia, serif" font-size="40" fill="#2F5D50">RS</text>
+</svg>
