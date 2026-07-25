@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PersonaTheme } from "@/components/persona/PersonaTheme";
 import { PersonaHero } from "@/components/persona/PersonaHero";
 import { PersonaProblemSection } from "@/components/persona/PersonaProblemSection";
 import { PersonaFaqSection } from "@/components/persona/PersonaFaqSection";
@@ -45,7 +44,7 @@ export default function RuhestandPage() {
   const telefon = getContactPhone();
 
   return (
-    <PersonaTheme>
+    <>
       <PersonaHero
         large
         eyebrow="Für Eigentümerinnen und Eigentümer im Ruhestand"
@@ -79,6 +78,6 @@ export default function RuhestandPage() {
       <Reveal>
         <PersonaRatgeberSection large posts={getPostsByPersona("ruhestand")} />
       </Reveal>
-    </PersonaTheme>
+    </>
   );
 }

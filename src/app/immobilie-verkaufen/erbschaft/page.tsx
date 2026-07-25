@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PersonaTheme } from "@/components/persona/PersonaTheme";
 import { PersonaHero } from "@/components/persona/PersonaHero";
 import { PersonaProblemSection } from "@/components/persona/PersonaProblemSection";
 import { PersonaFaqSection } from "@/components/persona/PersonaFaqSection";
@@ -42,7 +41,7 @@ const faqItems = [
 
 export default function ErbschaftPage() {
   return (
-    <PersonaTheme>
+    <>
       <PersonaHero
         eyebrow="Für Erbengemeinschaften im Rhein-Sieg-Kreis"
         headline="Geerbte Immobilie im Rhein-Sieg-Kreis? Wir helfen, ohne Familienstreit."
@@ -69,6 +68,6 @@ export default function ErbschaftPage() {
       <Reveal>
         <PersonaRatgeberSection posts={getPostsByPersona("erbschaft")} />
       </Reveal>
-    </PersonaTheme>
+    </>
   );
 }

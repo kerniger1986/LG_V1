@@ -5,24 +5,17 @@ import { loadGooglePlaces, RHEIN_SIEG_BOUNDS } from "@/lib/google-places";
 
 interface LeadFormProps {
   ortSeite: string;
-  variant?: "default" | "persona";
 }
 
 const GOOGLE_MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
-export function LeadForm({ ortSeite, variant = "default" }: LeadFormProps) {
-  const isPersona = variant === "persona";
+const feldLabel = "mb-2 block text-lg font-medium text-[#23282A]";
+const feldInput =
+  "w-full rounded-lg border border-[#23282A]/25 px-4 py-3 text-lg text-[#23282A] outline-none focus:border-[#2F5D50] focus:ring-2 focus:ring-[#2F5D50]/20 accent-[#2F5D50]";
+const submitButton =
+  "w-full rounded-lg bg-[#C08A2E] px-6 py-4 text-xl font-semibold text-[#23282A] transition-colors hover:brightness-95 disabled:opacity-60";
 
-  const feldLabel = isPersona
-    ? "block text-lg font-medium text-[#23282A] mb-2"
-    : "block text-lg font-medium text-slate-800 mb-2";
-  const feldInput = isPersona
-    ? "w-full rounded-lg border border-[#23282A]/25 px-4 py-3 text-lg text-[#23282A] focus:border-[#2F5D50] focus:ring-2 focus:ring-[#2F5D50]/20 outline-none accent-[#2F5D50]"
-    : "w-full rounded-lg border border-slate-300 px-4 py-3 text-lg text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-200 outline-none";
-  const submitButton = isPersona
-    ? "w-full rounded-lg bg-[#C08A2E] px-6 py-4 text-xl font-semibold text-[#23282A] transition-colors hover:brightness-95 disabled:opacity-60"
-    : "w-full rounded-lg bg-blue-700 px-6 py-4 text-xl font-semibold text-white hover:bg-blue-800 disabled:opacity-60";
-
+export function LeadForm({ ortSeite }: LeadFormProps) {
   const [vermietet, setVermietet] = useState<"ja" | "nein" | "">("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
@@ -391,12 +384,9 @@ export function LeadForm({ ortSeite, variant = "default" }: LeadFormProps) {
           id="datenschutzZustimmung"
           name="datenschutzZustimmung"
           required
-          className={`mt-1.5 h-5 w-5 ${isPersona ? "accent-[#2F5D50]" : ""}`}
+          className="mt-1.5 h-5 w-5 accent-[#2F5D50]"
         />
-        <label
-          htmlFor="datenschutzZustimmung"
-          className={isPersona ? "text-base text-[#23282A]" : "text-base text-slate-700"}
-        >
+        <label htmlFor="datenschutzZustimmung" className="text-base text-[#23282A]">
           Ich habe die{" "}
           <a href="/datenschutz" className="underline" target="_blank">
             Datenschutzerklärung

@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { RechtstextHinweis } from "@/components/RechtstextHinweis";
+import { personaSerif } from "@/lib/persona-fonts";
 
 export const metadata: Metadata = { title: "Datenschutzerklärung" };
 
 export default function DatenschutzPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
-      <h1 className="text-3xl font-semibold text-slate-900">
+      <h1
+        className={`${personaSerif.className} text-3xl font-bold text-[#23282A]`}
+      >
         Datenschutzerklärung
       </h1>
       <RechtstextHinweis />
 
-      <div className="space-y-8 text-lg text-slate-800">
+      <div className="space-y-8 text-lg text-[#23282A]">
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             1. Verantwortlicher
           </h2>
           <p className="mt-2">
@@ -26,7 +29,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             2. Welche Daten wir verarbeiten und warum
           </h2>
           <p className="mt-2">
@@ -45,7 +48,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             3. Weitergabe an Maklerpartner
           </h2>
           <p className="mt-2">
@@ -61,7 +64,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             4. Speicherdauer
           </h2>
           <p className="mt-2">
@@ -75,7 +78,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             5. Hosting und eingesetzte Dienstleister
           </h2>
           <p className="mt-2">
@@ -91,7 +94,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             6. Cookies und Tracking
           </h2>
           <p className="mt-2">
@@ -123,7 +126,7 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             7. Adress-Autovervollständigung (Google Places)
           </h2>
           <p className="mt-2">
@@ -140,8 +143,8 @@ export default function DatenschutzPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
-            7. Ihre Rechte
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
+            8. Ihre Rechte
           </h2>
           <p className="mt-2">
             Sie haben das Recht auf Auskunft, Berichtigung, Löschung,

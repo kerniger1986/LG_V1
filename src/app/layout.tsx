@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { TrackingScripts } from "@/components/TrackingScripts";
+import { personaSans } from "@/lib/persona-fonts";
 
 export const metadata: Metadata = {
   title: "Kostenlose Immobilien-Einschätzung Rhein-Sieg | Rhein-Sieg Immobilienberatung",
@@ -36,7 +37,9 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="min-h-full flex flex-col">
+      <body
+        className={`${personaSans.className} flex min-h-full flex-col bg-[#EFF2ED] text-[#23282A]`}
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -3,7 +3,6 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/lib/posts";
-import { PersonaTheme } from "@/components/persona/PersonaTheme";
 import { personaSerif } from "@/lib/persona-fonts";
 
 interface PageProps {
@@ -52,7 +51,7 @@ export default async function RatgeberArtikelPage({ params }: PageProps) {
   if (!post) notFound();
 
   return (
-    <PersonaTheme>
+    <>
       <article className="mx-auto max-w-3xl px-6 py-14 sm:py-20">
         <Link href="/ratgeber" className="text-[#2F5D50] underline">
           ← Zurück zum Ratgeber
@@ -76,6 +75,6 @@ export default async function RatgeberArtikelPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: post.contentHtml }}
         />
       </article>
-    </PersonaTheme>
+    </>
   );
 }

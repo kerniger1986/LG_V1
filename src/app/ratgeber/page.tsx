@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
-import { PersonaTheme } from "@/components/persona/PersonaTheme";
 import { personaSerif } from "@/lib/persona-fonts";
 import { SiebengebirgeDivider } from "@/components/persona/SiebengebirgeDivider";
 
@@ -24,7 +23,7 @@ export default function RatgeberPage() {
   const posts = getAllPosts();
 
   return (
-    <PersonaTheme>
+    <>
       <section className="bg-[#2F5D50] text-[#EFF2ED]">
         <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
           <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#C9DCD3]">
@@ -72,6 +71,6 @@ export default function RatgeberPage() {
           )}
         </ul>
       </div>
-    </PersonaTheme>
+    </>
   );
 }

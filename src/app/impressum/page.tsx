@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
 import { RechtstextHinweis } from "@/components/RechtstextHinweis";
+import { personaSerif } from "@/lib/persona-fonts";
 
 export const metadata: Metadata = { title: "Impressum" };
 
 export default function ImpressumPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
-      <h1 className="text-3xl font-semibold text-slate-900">Impressum</h1>
+      <h1
+        className={`${personaSerif.className} text-3xl font-bold text-[#23282A]`}
+      >
+        Impressum
+      </h1>
       <RechtstextHinweis />
 
-      <div className="space-y-6 text-lg text-slate-800">
+      <div className="space-y-6 text-lg text-[#23282A]">
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             Angaben gemäß § 5 DDG
           </h2>
           <p className="mt-2">
@@ -24,12 +29,12 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">Vertreten durch</h2>
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>Vertreten durch</h2>
           <p className="mt-2">[PLATZHALTER: Name der/des Geschäftsführer(s)]</p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">Kontakt</h2>
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>Kontakt</h2>
           <p className="mt-2">
             Telefon: [PLATZHALTER]
             <br />
@@ -38,7 +43,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">Registereintrag</h2>
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>Registereintrag</h2>
           <p className="mt-2">
             Eintragung im Handelsregister
             <br />
@@ -49,7 +54,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">Umsatzsteuer-ID</h2>
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>Umsatzsteuer-ID</h2>
           <p className="mt-2">
             Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:
             <br />
@@ -58,7 +63,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             Erlaubnis nach § 34c GewO
           </h2>
           <p className="mt-2">
@@ -71,7 +76,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
           </h2>
           <p className="mt-2">
@@ -80,7 +85,7 @@ export default function ImpressumPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">
+          <h2 className={`${personaSerif.className} text-xl font-bold text-[#23282A]`}>
             EU-Streitschlichtung
           </h2>
           <p className="mt-2">
@@ -88,7 +93,7 @@ export default function ImpressumPage() {
             Online-Streitbeilegung (OS) bereit:{" "}
             <a
               href="https://ec.europa.eu/consumers/odr/"
-              className="underline"
+              className="text-[#2F5D50] underline"
               target="_blank"
             >
               https://ec.europa.eu/consumers/odr/

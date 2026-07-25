@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { personaSerif } from "@/lib/persona-fonts";
 
 interface FaqItem {
   q: string;
-  a: string;
+  a: ReactNode;
 }
 
 interface PersonaFaqSectionProps {

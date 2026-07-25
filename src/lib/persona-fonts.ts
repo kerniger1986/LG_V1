@@ -1,7 +1,8 @@
 import { Source_Serif_4, Public_Sans } from "next/font/google";
 
-// Nur fuer die zwei Persona-Landingpages (Erbschaft/Ruhestand) genutzt,
-// bewusst nicht global eingebunden - siehe Design-Briefing Abschnitt 4.
+// Sitewide-Design (urspruenglich fuer die Persona-Landingpages entworfen,
+// siehe Design-Briefing Abschnitt 4, inzwischen auf die ganze Seite
+// ausgeweitet).
 export const personaSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["600", "700"],
