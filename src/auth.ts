@@ -21,15 +21,27 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           !adminEmail ||
           !adminPasswordHash
         ) {
+          console.log("[auth-debug] fehlt:", {
+            hatEmailInput: typeof email === "string",
+            hatPasswortInput: typeof password === "string",
+            hatAdminEmailEnv: Boolean(adminEmail),
+            hatAdminHashEnv: Boolean(adminPasswordHash),
+          });
           return null;
         }
 
-        if (email.trim().toLowerCase() !== adminEmail.trim().toLowerCase()) {
-          return null;
-        }
-
+        const emailPasst =
+          email.trim().toLowerCase() === adminEmail.trim().toLowerCase();
         const gueltig = await bcrypt.compare(password, adminPasswordHash);
-        if (!gueltig) return null;
+
+        console.log("[auth-debug] vergleich:", {
+          emailPasst,
+          passwortPasst: gueltig,
+          hashLaenge: adminPasswordHash.length,
+          hashPrefix: adminPasswordHash.slice(0, 7),
+        });
+
+        if (!emailPasst || !gueltig) return null;
 
         return { id: "admin", email: adminEmail };
       },
