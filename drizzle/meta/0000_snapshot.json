@@ -1,0 +1,327 @@
+{
+  "id": "cc520fa3-90db-4830-9750-628ac39702bb",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.leads": {
+      "name": "leads",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "telefon": {
+          "name": "telefon",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plz_ort": {
+          "name": "plz_ort",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "immobilientyp": {
+          "name": "immobilientyp",
+          "type": "immobilientyp",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "wohnflaeche": {
+          "name": "wohnflaeche",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "baujahr": {
+          "name": "baujahr",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "zustand": {
+          "name": "zustand",
+          "type": "zustand",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "verkaufsgrund": {
+          "name": "verkaufsgrund",
+          "type": "verkaufsgrund",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "vermietet": {
+          "name": "vermietet",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kaltmiete": {
+          "name": "kaltmiete",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "preisvorstellung": {
+          "name": "preisvorstellung",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "zeitrahmen": {
+          "name": "zeitrahmen",
+          "type": "zeitrahmen",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "datenschutz_zustimmung": {
+          "name": "datenschutz_zustimmung",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "utm_quelle": {
+          "name": "utm_quelle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ort_seite": {
+          "name": "ort_seite",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kaufpreis_pro_m2": {
+          "name": "kaufpreis_pro_m2",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mietrendite_prozent": {
+          "name": "mietrendite_prozent",
+          "type": "numeric(6, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ampel": {
+          "name": "ampel",
+          "type": "ampel",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "lead_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'neu'"
+        },
+        "notizen": {
+          "name": "notizen",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "makler_partner_id": {
+          "name": "makler_partner_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loeschen_am": {
+          "name": "loeschen_am",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "leads_makler_partner_id_makler_partners_id_fk": {
+          "name": "leads_makler_partner_id_makler_partners_id_fk",
+          "tableFrom": "leads",
+          "tableTo": "makler_partners",
+          "columnsFrom": [
+            "makler_partner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.makler_partners": {
+      "name": "makler_partners",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kontakt_email": {
+          "name": "kontakt_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kontakt_telefon": {
+          "name": "kontakt_telefon",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "provisionssatz_prozent": {
+          "name": "provisionssatz_prozent",
+          "type": "numeric(5, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notizen": {
+          "name": "notizen",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.ampel": {
+      "name": "ampel",
+      "schema": "public",
+      "values": [
+        "gruen",
+        "gelb",
+        "rot"
+      ]
+    },
+    "public.immobilientyp": {
+      "name": "immobilientyp",
+      "schema": "public",
+      "values": [
+        "haus",
+        "wohnung",
+        "grundstueck"
+      ]
+    },
+    "public.lead_status": {
+      "name": "lead_status",
+      "schema": "public",
+      "values": [
+        "neu",
+        "in_pruefung",
+        "an_makler_uebergeben",
+        "eigener_ankauf",
+        "abgeschlossen",
+        "abgelehnt"
+      ]
+    },
+    "public.verkaufsgrund": {
+      "name": "verkaufsgrund",
+      "schema": "public",
+      "values": [
+        "erbschaft",
+        "alter",
+        "umzug",
+        "scheidung",
+        "sonstiges"
+      ]
+    },
+    "public.zeitrahmen": {
+      "name": "zeitrahmen",
+      "schema": "public",
+      "values": [
+        "sofort",
+        "drei_bis_sechs_monate",
+        "unklar"
+      ]
+    },
+    "public.zustand": {
+      "name": "zustand",
+      "schema": "public",
+      "values": [
+        "renoviert",
+        "normal",
+        "sanierungsbeduerftig"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
