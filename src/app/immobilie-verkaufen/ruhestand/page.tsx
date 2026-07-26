@@ -6,6 +6,7 @@ import { PersonaFormSection } from "@/components/persona/PersonaFormSection";
 import { PersonaAblaufSection } from "@/components/persona/PersonaAblaufSection";
 import { getContactPhone } from "@/lib/contact";
 import { PersonaRatgeberSection } from "@/components/persona/PersonaRatgeberSection";
+import { PersonaTestimonialSection } from "@/components/persona/PersonaTestimonialSection";
 import { Reveal } from "@/components/persona/Reveal";
 import { getPostsByPersona } from "@/lib/posts";
 
@@ -63,6 +64,9 @@ export default function RuhestandPage() {
       </Reveal>
       <Reveal>
         <PersonaFaqSection large items={faqItems} />
+      </Reveal>
+      <Reveal>
+        <PersonaTestimonialSection large />
       </Reveal>
       <Reveal>
         <PersonaFormSection

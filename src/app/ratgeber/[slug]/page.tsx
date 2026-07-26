@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getPersonaLabel } from "@/lib/posts";
 import { personaSerif } from "@/lib/persona-fonts";
+import { getArticleEmbed } from "@/components/ratgeber/article-embeds";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -62,11 +63,15 @@ export default async function RatgeberArtikelPage({ params }: PageProps) {
           {post.title}
         </h1>
 
-        <div
-          className="prose prose-lg mt-8 max-w-none"
-          style={proseFarben}
-          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-        />
+        <div className="prose prose-lg mt-8 max-w-none" style={proseFarben}>
+          {post.segments.map((segment, i) =>
+            segment.type === "html" ? (
+              <div key={i} dangerouslySetInnerHTML={{ __html: segment.html }} />
+            ) : (
+              <div key={i}>{getArticleEmbed(post.slug, segment.token)}</div>
+            ),
+          )}
+        </div>
       </article>
     </>
   );

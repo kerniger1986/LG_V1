@@ -15,8 +15,12 @@ export interface PostMeta {
   persona?: Persona;
 }
 
+export type ContentSegment =
+  | { type: "html"; html: string }
+  | { type: "component"; token: string };
+
 export interface Post extends PostMeta {
-  contentHtml: string;
+  segments: ContentSegment[];
 }
 
 const personaLabels: Record<Persona, string> = {
@@ -81,7 +85,42 @@ export function getPostBySlug(slug: string): Post | null {
 
   const raw = fs.readFileSync(filePath, "utf-8");
   const { content } = matter(raw);
-  const contentHtml = marked.parse(content, { async: false }) as string;
+  const segments = parseSegments(content);
 
-  return { ...meta, contentHtml };
+  return { ...meta, segments };
+}
+
+// Markdown-Body kann Marker der Form [[COMPONENT:token]] auf eigener Zeile
+// enthalten, um an dieser Stelle eine interaktive React-Komponente statt
+// reinem HTML einzublenden (siehe src/components/ratgeber/article-embeds.tsx).
+const COMPONENT_MARKER = /^\[\[COMPONENT:([a-z0-9-]+)\]\]$/;
+
+function parseSegments(content: string): ContentSegment[] {
+  const zeilen = content.split("\n");
+  const segments: ContentSegment[] = [];
+  let puffer: string[] = [];
+
+  function pufferSchreiben() {
+    const markdown = puffer.join("\n").trim();
+    if (markdown) {
+      segments.push({
+        type: "html",
+        html: marked.parse(markdown, { async: false }) as string,
+      });
+    }
+    puffer = [];
+  }
+
+  for (const zeile of zeilen) {
+    const match = zeile.trim().match(COMPONENT_MARKER);
+    if (match) {
+      pufferSchreiben();
+      segments.push({ type: "component", token: match[1] });
+    } else {
+      puffer.push(zeile);
+    }
+  }
+  pufferSchreiben();
+
+  return segments;
 }

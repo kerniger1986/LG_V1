@@ -5,7 +5,10 @@ import { PersonaHero } from "@/components/persona/PersonaHero";
 import { PersonaAblaufSection } from "@/components/persona/PersonaAblaufSection";
 import { PersonaFaqSection } from "@/components/persona/PersonaFaqSection";
 import { PersonaFormSection } from "@/components/persona/PersonaFormSection";
+import { PersonaTestimonialSection } from "@/components/persona/PersonaTestimonialSection";
+import { LocalBusinessSchema } from "@/components/LocalBusinessSchema";
 import { Reveal } from "@/components/persona/Reveal";
+import { getContactPhone } from "@/lib/contact";
 
 interface LandingContentProps {
   ortName: string;
@@ -44,14 +47,18 @@ export function LandingContent({
   intro,
   zeigeOrtsliste = false,
 }: LandingContentProps) {
+  const telefon = getContactPhone();
+
   return (
     <div>
+      <LocalBusinessSchema areaServed={ortName} />
       <PersonaHero
         eyebrow="Ihr lokaler Marktkenner"
         headline={`Immobilie in ${ortName} verkaufen?`}
         subheadline={`Kostenlose, unverbindliche Einschätzung durch einen lokalen Marktkenner${intro ? ` – ${intro}` : "."} Ganz in Ruhe, ohne Verpflichtung und ohne Drucksprache.`}
         ctaLabel="Jetzt kostenlos einschätzen lassen"
         ctaHref="#einschaetzung"
+        phone={telefon ?? undefined}
         showRegionPhoto={zeigeOrtsliste}
       />
 
@@ -132,10 +139,18 @@ export function LandingContent({
       </Reveal>
 
       <Reveal>
+        <PersonaTestimonialSection />
+      </Reveal>
+
+      <Reveal>
         <PersonaFormSection
           ortSeite={ortSlug}
           heading="Kostenlose Einschätzung anfordern"
-          intro="Füllen Sie das Formular aus – wir melden uns persönlich bei Ihnen."
+          intro={
+            telefon
+              ? "Füllen Sie das Formular aus, oder rufen Sie uns einfach an – ganz wie es Ihnen lieber ist."
+              : "Füllen Sie das Formular aus – wir melden uns persönlich bei Ihnen."
+          }
         />
       </Reveal>
 

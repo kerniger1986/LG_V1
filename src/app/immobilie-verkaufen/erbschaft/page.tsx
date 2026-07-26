@@ -5,7 +5,9 @@ import { PersonaFaqSection } from "@/components/persona/PersonaFaqSection";
 import { PersonaFormSection } from "@/components/persona/PersonaFormSection";
 import { PersonaAblaufSection } from "@/components/persona/PersonaAblaufSection";
 import { PersonaRatgeberSection } from "@/components/persona/PersonaRatgeberSection";
+import { PersonaTestimonialSection } from "@/components/persona/PersonaTestimonialSection";
 import { Reveal } from "@/components/persona/Reveal";
+import { getContactPhone } from "@/lib/contact";
 import { getPostsByPersona } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -40,6 +42,8 @@ const faqItems = [
 ];
 
 export default function ErbschaftPage() {
+  const telefon = getContactPhone();
+
   return (
     <>
       <PersonaHero
@@ -48,6 +52,7 @@ export default function ErbschaftPage() {
         subheadline="Kostenlose, unverbindliche Einschätzung – auch wenn sich die Erbengemeinschaft noch nicht einig ist."
         ctaLabel="Jetzt kostenlos einschätzen lassen"
         ctaHref="#einschaetzung"
+        phone={telefon ?? undefined}
         showRegionPhoto
       />
       <Reveal>
@@ -57,10 +62,17 @@ export default function ErbschaftPage() {
         <PersonaFaqSection items={faqItems} />
       </Reveal>
       <Reveal>
+        <PersonaTestimonialSection />
+      </Reveal>
+      <Reveal>
         <PersonaFormSection
           ortSeite="erbschaft"
           heading="Kostenlose Einschätzung anfordern"
-          intro="Füllen Sie das Formular aus – wir melden uns persönlich bei Ihnen, unabhängig davon, wie weit die Erbengemeinschaft in ihrer Entscheidung schon ist."
+          intro={
+            telefon
+              ? "Füllen Sie das Formular aus, oder rufen Sie uns einfach an – ganz wie es Ihnen lieber ist. Wir melden uns persönlich bei Ihnen, unabhängig davon, wie weit die Erbengemeinschaft in ihrer Entscheidung schon ist."
+              : "Füllen Sie das Formular aus – wir melden uns persönlich bei Ihnen, unabhängig davon, wie weit die Erbengemeinschaft in ihrer Entscheidung schon ist."
+          }
         />
       </Reveal>
       <Reveal>
